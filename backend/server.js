@@ -15,10 +15,13 @@ connectDB()
 connectCloudinary()
 
 const _dirname = path.resolve();
-
+const corsOptions = {
+  origin: "https://doctor-appointmen-system-0i4i.onrender.com",
+  Credential:true
+}
 // middlewares
 app.use(express.json())
-app.use(cors())
+app.use(cors(corsOptions))
 
 // api endpoints
 app.use("/api/user", userRouter)
