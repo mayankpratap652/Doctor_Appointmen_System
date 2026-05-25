@@ -70,30 +70,55 @@ const Navbar = () => {
         )}
 
         {/* Mobile Menu Icon */}
-        <img 
-          onClick={() => setShowMenu(true)} 
-          className='w-6 md:hidden cursor-pointer' 
-          src={assets.menu_icon} 
-          alt="" 
-        />
+        {/* Mobile Menu Icon */}
+<div className='md:hidden'>
+  <img
+    onClick={() => {
+      console.log("menu clicked")
+      setShowMenu(true)
+    }}
+    className='w-6 cursor-pointer'
+    src={assets.menu_icon}
+    alt=""
+  />
+</div>
 
-        {/* 🔥 MOBILE MENU */}
-  <div className={`md:hidden fixed top-0 right-0 bottom-0 z-20 bg-white transition-all duration-300 overflow-hidden ${showMenu ? 'w-full' : 'w-0'}`}>
-          <div className='flex items-center justify-between px-5 py-6 border-b'>
-            <img src={assets.logo} className='w-32' alt="" />
-            <img onClick={() => setShowMenu(false)} src={assets.cross_icon} className='w-7 cursor-pointer' alt="" />
-          </div>
+{/* MOBILE MENU */}
+<div
+  className={`fixed top-0 right-0 h-screen bg-white z-50 transition-all duration-300 ${
+    showMenu ? 'w-full' : 'w-0 overflow-hidden'
+  }`}
+>
+  <div className='flex items-center justify-between px-5 py-6 border-b'>
+    <img src={assets.logo} className='w-32' alt="" />
 
-          <ul className='flex flex-col items-center gap-4 mt-8 text-lg font-medium'>
-            {["/", "/doctors", "/about", "/contact"].map((path, i) => (
-              <NavLink key={i} onClick={() => setShowMenu(false)} to={path}>
-                <p className='px-6 py-2 rounded-full hover:bg-primary/10 transition'>
-                  {["HOME", "ALL DOCTORS", "ABOUT", "CONTACT"][i]}
-                </p>
-              </NavLink>
-            ))}
-          </ul>
-        </div>
+    <img
+      onClick={() => setShowMenu(false)}
+      src={assets.cross_icon}
+      className='w-7 cursor-pointer'
+      alt=""
+    />
+  </div>
+
+  <ul className='flex flex-col items-center gap-6 mt-10 text-lg font-medium'>
+    <NavLink onClick={() => setShowMenu(false)} to='/'>
+      <p>HOME</p>
+    </NavLink>
+
+    <NavLink onClick={() => setShowMenu(false)} to='/doctors'>
+      <p>ALL DOCTORS</p>
+    </NavLink>
+
+    <NavLink onClick={() => setShowMenu(false)} to='/about'>
+      <p>ABOUT</p>
+    </NavLink>
+
+    <NavLink onClick={() => setShowMenu(false)} to='/contact'>
+      <p>CONTACT</p>
+    </NavLink>
+  </ul>
+</div>
+       
       </div>
     </div>
   )
