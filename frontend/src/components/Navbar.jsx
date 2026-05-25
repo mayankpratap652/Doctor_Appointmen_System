@@ -78,8 +78,7 @@ const Navbar = () => {
         />
 
         {/* 🔥 MOBILE MENU */}
-        <div className={`md:hidden ${showMenu ? 'fixed w-full' : 'h-0 w-0'} right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}>
-          
+  <div className={`md:hidden fixed top-0 right-0 bottom-0 z-20 bg-white transition-all duration-300 overflow-hidden ${showMenu ? 'w-full' : 'w-0'}`}>
           <div className='flex items-center justify-between px-5 py-6 border-b'>
             <img src={assets.logo} className='w-32' alt="" />
             <img onClick={() => setShowMenu(false)} src={assets.cross_icon} className='w-7 cursor-pointer' alt="" />
