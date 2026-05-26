@@ -35,12 +35,10 @@ const MyAppointments = () => {
             const { data } = await axios.post(
                 backendUrl + '/api/user/payment-razorpay',
                 { appointmentId },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
+                 { headers: { token } }
             )
+            console.log(data);
+            
 
             if (data.success) {
 
@@ -57,11 +55,7 @@ const MyAppointments = () => {
                         const verifyData = await axios.post(
                             backendUrl + '/api/user/verifyRazorpay',
                             response,
-                            {
-                                headers: {
-                                    Authorization: `Bearer ${token}`
-                                }
-                            }
+                              { headers: { token } }
                         )
 
                         if (verifyData.data.success) {
@@ -92,11 +86,7 @@ const MyAppointments = () => {
 
         const { data } = await axios.get(
             backendUrl + '/api/user/appointments',
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }
+              { headers: { token } }
         )
 
         if (data.success) {
@@ -118,11 +108,7 @@ const MyAppointments = () => {
             const { data } = await axios.post(
                 backendUrl + '/api/user/cancel-appointment',
                 { appointmentId },
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                }
+                  { headers: { token } }
             )
 
             if (data.success) {
