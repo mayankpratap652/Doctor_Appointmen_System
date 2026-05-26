@@ -255,8 +255,12 @@ const paymentRazorpay = async (req, res) => {
 
         // creation of an order
         const order = await razorpayInstance.orders.create(options)
-
-        res.json({ success: true, order })
+        console.log("RAZORPAY KEY:", process.env.RAZORPAY_KEY_ID)
+        res.json({
+            success: true,
+            order,
+            key: process.env.RAZORPAY_KEY_ID
+        })
 
     } catch (error) {
         console.log(error)
