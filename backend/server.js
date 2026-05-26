@@ -16,8 +16,9 @@ connectCloudinary()
 
 const _dirname = path.resolve();
 const corsOptions = {
-  origin: "https://doctor-appointmen-system-0i4i.onrender.com",
-  Credentials:true
+  origin: ["https://doctor-appointmen-system-0i4i.onrender.com", "https://doctor-admin-6v9v.onrender.com"],
+  
+  Credentials: true
 }
 // middlewares
 app.use(express.json())
@@ -30,8 +31,8 @@ app.use("/api/doctor", doctorRouter)
 
 app.use(express.static(path.join(_dirname, "/frontend/dist")))
 app.get('*', (_, res) => {
-  res.sendFile(path.resolve(_dirname, "frontend" , "dist", "index.html"));
-  
+  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
+
 })
 
 app.get("/", (req, res) => {
