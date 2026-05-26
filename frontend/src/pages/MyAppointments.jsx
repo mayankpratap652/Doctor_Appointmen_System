@@ -41,7 +41,7 @@ const MyAppointments = () => {
             if (data.success) {
 
                 const options = {
-                    key: data.order.key_id,
+                    key: data.key,
                     amount: data.order.amount,
                     currency: data.order.currency,
                     name: "Appointment Payment",
