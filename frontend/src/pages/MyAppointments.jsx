@@ -35,7 +35,11 @@ const MyAppointments = () => {
             const { data } = await axios.post(
                 backendUrl + '/api/user/payment-razorpay',
                 { appointmentId },
-                { headers: { token } }
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
             )
 
             if (data.success) {
@@ -53,7 +57,11 @@ const MyAppointments = () => {
                         const verifyData = await axios.post(
                             backendUrl + '/api/user/verifyRazorpay',
                             response,
-                            { headers: { token } }
+                            {
+                                headers: {
+                                    Authorization: `Bearer ${token}`
+                                }
+                            }
                         )
 
                         if (verifyData.data.success) {
@@ -65,6 +73,8 @@ const MyAppointments = () => {
                         }
                     }
                 }
+                console.log(options);
+
 
                 const rzp = new window.Razorpay(options)
                 rzp.open()
@@ -82,7 +92,11 @@ const MyAppointments = () => {
 
             const { data } = await axios.get(
                 backendUrl + '/api/user/appointments',
-                { headers: { token } }
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
             )
 
             // 🔥 Reverse Fix
@@ -100,7 +114,11 @@ const MyAppointments = () => {
             const { data } = await axios.post(
                 backendUrl + '/api/user/cancel-appointment',
                 { appointmentId },
-                { headers: { token } }
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                }
             )
 
             if (data.success) {

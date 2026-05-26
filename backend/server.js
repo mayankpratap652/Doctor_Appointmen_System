@@ -17,7 +17,7 @@ connectCloudinary()
 const _dirname = path.resolve();
 const corsOptions = {
   origin: "https://doctor-appointmen-system-0i4i.onrender.com",
-  Credential:true
+  Credentials:true
 }
 // middlewares
 app.use(express.json())
