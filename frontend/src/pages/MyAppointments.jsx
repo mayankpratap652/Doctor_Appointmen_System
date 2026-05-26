@@ -87,25 +87,29 @@ const MyAppointments = () => {
     }
 
     // 🔥 Get Appointments
-    const getUserAppointments = async () => {
-        try {
+  const getUserAppointments = async () => {
+    try {
 
-            const { data } = await axios.get(
-                backendUrl + '/api/user/appointments',
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
+        const { data } = await axios.get(
+            backendUrl + '/api/user/appointments',
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
                 }
-            )
+            }
+        )
 
-            // 🔥 Reverse Fix
+        if (data.success) {
             setAppointments([...data.appointments].reverse())
-
-        } catch (error) {
-            toast.error(error.message)
+        } else {
+            toast.error(data.message)
         }
+
+    } catch (error) {
+        console.log(error)
+        toast.error(error.message)
     }
+}
 
     // 🔥 Cancel Appointment
     const cancelAppointment = async (appointmentId) => {
